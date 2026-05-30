@@ -1,14 +1,20 @@
-// simple animation when page loads
+// Fade in page
+document.body.style.opacity = 0;
+document.body.style.transition = "opacity 1s ease";
+
 window.onload = () => {
-    document.body.style.opacity = "1";
+    document.body.style.opacity = 1;
 };
 
-// smooth page transition effect
-document.body.style.opacity = "0";
-document.body.style.transition = "0.5s";
+// Scroll reveal animation
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
 
-// fake contact form send
-function send(e) {
-    e.preventDefault();
-    alert("Message sent successfully!");
-}
+document.querySelectorAll(".reveal").forEach(el => {
+    observer.observe(el);
+});
