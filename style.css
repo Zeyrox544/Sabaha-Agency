@@ -177,3 +177,51 @@ footer {
         font-size: 16px;
     }
 }
+    /* SCROLL REVEAL */
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* HERO GLOW BACKGROUND */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 70%);
+    top: -100px;
+    left: -100px;
+    filter: blur(100px);
+    animation: moveGlow 10s infinite alternate;
+}
+
+@keyframes moveGlow {
+    0% {
+        transform: translate(0,0);
+    }
+    100% {
+        transform: translate(200px,200px);
+    }
+}
+
+/* SMOOTH HOVER ZOOM */
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* BUTTON GLOW */
+button:hover {
+    box-shadow: 0 0 25px rgba(255,255,255,0.4);
+}
